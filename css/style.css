@@ -1,0 +1,13 @@
+.player-class img{
+    width: 200px;
+}
+.player-class{
+    padding: 10px;
+}
+#display-player{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.player-details img{
+    width: 350px;
+}
