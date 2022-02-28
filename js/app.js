@@ -1,5 +1,13 @@
+const spinnerShow=(toggol)=>{
+    document.getElementById('spinner').style.display=toggol;
+}
+const spinner2=(toggol=>{
+    document.getElementById('spinner2').style.display=toggol;
+})
+
 const loadData=()=>{
     document.getElementById('display-player').innerHTML=''
+    spinnerShow('block');
     const searchField=document.getElementById('search-field')
     const searchFieldvalue=searchField.value 
     const url=`https://www.thesportsdb.com/api/v1/json/2/searchplayers.php?p=${searchFieldvalue}`
@@ -13,6 +21,7 @@ const displayData=(players)=>{
         const displayPlayer=document.getElementById('display-player')
         const div=document.createElement('div')
         div.classList.add('player-class');
+        
         div.innerHTML=`
         <img src="${player.strThumb}" alt="">
         <h2>${player.strPlayer}</h2>
@@ -21,10 +30,14 @@ const displayData=(players)=>{
         <button onclick="detailsShow('${player.idPlayer}')" class="btn btn-primary">Details</button>
         `
         displayPlayer.appendChild(div);
+       
     });
+    spinnerShow('none');
 }
+
 const detailsShow=(id)=>{
     document.getElementById('details-player').innerHTML=''
+    spinner2('block');
     const detailsPlayer=document.getElementById('details-player');
     const url=`https://www.thesportsdb.com/api/v1/json/2/lookupplayer.php?id=${id}`
     fetch(url)
@@ -49,4 +62,6 @@ const playerDetails=(playerInfo)=>{
     
     `
     detailsPlayers.appendChild(div)
+    spinner2('none');
 }
+
